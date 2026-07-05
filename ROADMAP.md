@@ -9,3 +9,4 @@
 | **0.5** | SARIF output format, GitHub Advanced Security integration | Planned |
 | **0.6** | Multi-language support (TypeScript/JavaScript AI frameworks) | Planned |
 | **1.0** | Stable API, documentation site, enterprise deployment guide | Planned |
+
