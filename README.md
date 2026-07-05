@@ -102,6 +102,8 @@ Output combines all three stages into a single CycloneDX document.
 
 ## Output Format
 
+See [`examples/`](examples/) for sample AIBOM output in JSON and XML.
+
 | Section | Contents |
 |---------|----------|
 | `metadata` | Timestamp, tool identification, risk properties |

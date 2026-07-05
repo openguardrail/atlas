@@ -1,0 +1,253 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-07-05T12:00:00Z",
+    "component": {
+      "type": "machine-learning-model",
+      "name": "whisper",
+      "version": "20230314",
+      "bom-ref": "whisper-model",
+      "description": "Whisper is a general-purpose speech recognition model trained on a large dataset of diverse audio.",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/openai/whisper"
+        },
+        {
+          "type": "documentation",
+          "url": "https://arxiv.org/abs/2212.04356",
+          "comment": "Robust Speech Recognition via Large-Scale Weak Supervision"
+        },
+        {
+          "type": "distribution",
+          "url": "https://huggingface.co/openai/whisper-large-v3"
+        }
+      ]
+    },
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "openguardrail-atlas",
+          "version": "0.1.0"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "machine-learning-model",
+      "name": "whisper-large-v3",
+      "version": "20230314",
+      "bom-ref": "whisper-large-v3",
+      "description": "Whisper large-v3 is a pre-trained model for automatic speech recognition (ASR) and speech translation.",
+      "supplier": {
+        "name": "OpenAI",
+        "url": [
+          "https://openai.com"
+        ]
+      },
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "modelCard": {
+        "modelParameters": {
+          "approach": {
+            "type": "supervised"
+          },
+          "task": "Automatic Speech Recognition and Speech Translation",
+          "architectureFamily": "Transformer (Encoder-Decoder)",
+          "modelArchitecture": "Transformer with multi-head attention encoder and autoregressive decoder",
+          "datasets": [
+            {
+              "type": "dataset",
+              "name": "Whisper Training Data",
+              "description": "680,000 hours of multilingual and multitask weakly-supervised web audio data",
+              "governance": {
+                "owners": [
+                  {
+                    "organization": {
+                      "name": "OpenAI"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "inputs": [
+            {
+              "format": "audio/wav"
+            },
+            {
+              "format": "audio/mp3"
+            },
+            {
+              "format": "audio/flac"
+            }
+          ],
+          "outputs": [
+            {
+              "format": "text/plain"
+            }
+          ]
+        },
+        "quantitativeAnalysis": {
+          "performanceMetrics": [
+            {
+              "type": "Word Error Rate (WER)",
+              "value": "4.2%",
+              "description": "Word error rate on LibriSpeech test-clean"
+            },
+            {
+              "type": "Word Error Rate (WER)",
+              "value": "8.4%",
+              "description": "Word error rate on LibriSpeech test-other"
+            }
+          ]
+        },
+        "considerations": {
+          "technicalLimitations": [
+            "Performance varies across languages; lower-resource languages have higher error rates",
+            "May hallucinate text for very noisy audio or non-speech audio",
+            "Real-time processing may require GPU acceleration"
+          ],
+          "ethicalConsiderations": [
+            {
+              "description": "Model trained on web-scraped data which may contain biases"
+            },
+            {
+              "description": "Performance disparities across accents and dialects"
+            },
+            {
+              "description": "Potential for misuse in surveillance applications"
+            }
+          ]
+        }
+      },
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/openai/whisper"
+        },
+        {
+          "type": "documentation",
+          "url": "https://arxiv.org/abs/2212.04356"
+        },
+        {
+          "type": "distribution",
+          "url": "https://huggingface.co/openai/whisper-large-v3"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "torch",
+      "version": "2.0.0",
+      "bom-ref": "pytorch",
+      "description": "PyTorch deep learning framework",
+      "purl": "pkg:pypi/torch@2.0.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://pytorch.org"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "transformers",
+      "version": "4.36.0",
+      "bom-ref": "transformers",
+      "description": "Hugging Face Transformers library for state-of-the-art NLP and ML models",
+      "purl": "pkg:pypi/transformers@4.36.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://huggingface.co/docs/transformers"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "tiktoken",
+      "version": "0.6.0",
+      "bom-ref": "tiktoken",
+      "description": "Fast BPE tokenizer for use with OpenAI models",
+      "purl": "pkg:pypi/tiktoken@0.6.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "name": "numpy",
+      "version": "1.24.0",
+      "bom-ref": "numpy",
+      "description": "Fundamental package for scientific computing in Python",
+      "purl": "pkg:pypi/numpy@1.24.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
+          }
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "whisper-large-v3",
+      "dependsOn": [
+        "pytorch",
+        "transformers",
+        "tiktoken",
+        "numpy"
+      ]
+    },
+    {
+      "ref": "transformers",
+      "dependsOn": [
+        "pytorch",
+        "numpy"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bom xmlns="http://cyclonedx.org/schema/bom/1.6"
+     serialNumber="urn:uuid:3e671687-395b-41f5-a30f-a58921a69b79"
+     version="1">
+  <metadata>
+    <timestamp>2026-07-05T12:00:00Z</timestamp>
+    <component type="machine-learning-model" bom-ref="whisper-model">
+      <name>whisper</name>
+      <version>20230314</version>
+      <description>Whisper is a general-purpose speech recognition model trained on a large dataset of diverse audio.</description>
+      <supplier>
+        <name>OpenAI</name>
+        <url>https://openai.com</url>
+      </supplier>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <externalReferences>
+        <reference type="website">
+          <url>https://github.com/openai/whisper</url>
+        </reference>
+        <reference type="documentation">
+          <url>https://arxiv.org/abs/2212.04356</url>
+          <comment>Robust Speech Recognition via Large-Scale Weak Supervision</comment>
+        </reference>
+        <reference type="distribution">
+          <url>https://huggingface.co/openai/whisper-large-v3</url>
+        </reference>
+      </externalReferences>
+    </component>
+    <tools>
+      <components>
+        <component type="application">
+          <name>openguardrail-atlas</name>
+          <version>0.1.0</version>
+        </component>
+      </components>
+    </tools>
+  </metadata>
+  <components>
+    <component type="machine-learning-model" bom-ref="whisper-large-v3">
+      <name>whisper-large-v3</name>
+      <version>20230314</version>
+      <description>Whisper large-v3 is a pre-trained model for automatic speech recognition (ASR) and speech translation.</description>
+      <supplier>
+        <name>OpenAI</name>
+        <url>https://openai.com</url>
+      </supplier>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+      <modelCard>
+        <modelParameters>
+          <approach>
+            <type>supervised</type>
+          </approach>
+          <task>Automatic Speech Recognition and Speech Translation</task>
+          <architectureFamily>Transformer (Encoder-Decoder)</architectureFamily>
+          <modelArchitecture>Transformer with multi-head attention encoder and autoregressive decoder</modelArchitecture>
+          <datasets>
+            <dataset>
+              <type>dataset</type>
+              <name>Whisper Training Data</name>
+              <description>680,000 hours of multilingual and multitask weakly-supervised web audio data</description>
+              <governance>
+                <owners>
+                  <owner>
+                    <organization>
+                      <name>OpenAI</name>
+                    </organization>
+                  </owner>
+                </owners>
+              </governance>
+            </dataset>
+          </datasets>
+          <inputs>
+            <input>
+              <format>audio/wav</format>
+            </input>
+            <input>
+              <format>audio/mp3</format>
+            </input>
+            <input>
+              <format>audio/flac</format>
+            </input>
+          </inputs>
+          <outputs>
+            <output>
+              <format>text/plain</format>
+            </output>
+          </outputs>
+        </modelParameters>
+        <quantitativeAnalysis>
+          <performanceMetrics>
+            <performanceMetric>
+              <type>Word Error Rate (WER)</type>
+              <value>4.2%</value>
+              <description>Word error rate on LibriSpeech test-clean</description>
+            </performanceMetric>
+            <performanceMetric>
+              <type>Word Error Rate (WER)</type>
+              <value>8.4%</value>
+              <description>Word error rate on LibriSpeech test-other</description>
+            </performanceMetric>
+          </performanceMetrics>
+        </quantitativeAnalysis>
+        <considerations>
+          <technicalLimitations>
+            <technicalLimitation>Performance varies across languages; lower-resource languages have higher error rates</technicalLimitation>
+            <technicalLimitation>May hallucinate text for very noisy audio or non-speech audio</technicalLimitation>
+            <technicalLimitation>Real-time processing may require GPU acceleration</technicalLimitation>
+          </technicalLimitations>
+          <ethicalConsiderations>
+            <ethicalConsideration>
+              <description>Model trained on web-scraped data which may contain biases</description>
+            </ethicalConsideration>
+            <ethicalConsideration>
+              <description>Performance disparities across accents and dialects</description>
+            </ethicalConsideration>
+            <ethicalConsideration>
+              <description>Potential for misuse in surveillance applications</description>
+            </ethicalConsideration>
+          </ethicalConsiderations>
+        </considerations>
+      </modelCard>
+      <externalReferences>
+        <reference type="website">
+          <url>https://github.com/openai/whisper</url>
+        </reference>
+        <reference type="documentation">
+          <url>https://arxiv.org/abs/2212.04356</url>
+        </reference>
+        <reference type="distribution">
+          <url>https://huggingface.co/openai/whisper-large-v3</url>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="pytorch">
+      <name>torch</name>
+      <version>2.0.0</version>
+      <description>PyTorch deep learning framework</description>
+      <purl>pkg:pypi/torch@2.0.0</purl>
+      <licenses>
+        <license>
+          <id>BSD-3-Clause</id>
+        </license>
+      </licenses>
+      <externalReferences>
+        <reference type="website">
+          <url>https://pytorch.org</url>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="transformers">
+      <name>transformers</name>
+      <version>4.36.0</version>
+      <description>Hugging Face Transformers library for state-of-the-art NLP and ML models</description>
+      <purl>pkg:pypi/transformers@4.36.0</purl>
+      <licenses>
+        <license>
+          <id>Apache-2.0</id>
+        </license>
+      </licenses>
+      <externalReferences>
+        <reference type="website">
+          <url>https://huggingface.co/docs/transformers</url>
+        </reference>
+      </externalReferences>
+    </component>
+    <component type="library" bom-ref="tiktoken">
+      <name>tiktoken</name>
+      <version>0.6.0</version>
+      <description>Fast BPE tokenizer for use with OpenAI models</description>
+      <purl>pkg:pypi/tiktoken@0.6.0</purl>
+      <licenses>
+        <license>
+          <id>MIT</id>
+        </license>
+      </licenses>
+    </component>
+    <component type="library" bom-ref="numpy">
+      <name>numpy</name>
+      <version>1.24.0</version>
+      <description>Fundamental package for scientific computing in Python</description>
+      <purl>pkg:pypi/numpy@1.24.0</purl>
+      <licenses>
+        <license>
+          <id>BSD-3-Clause</id>
+        </license>
+      </licenses>
+    </component>
+  </components>
+  <dependencies>
+    <dependency ref="whisper-large-v3">
+      <dependency ref="pytorch"/>
+      <dependency ref="transformers"/>
+      <dependency ref="tiktoken"/>
+      <dependency ref="numpy"/>
+    </dependency>
+    <dependency ref="transformers">
+      <dependency ref="pytorch"/>
+      <dependency ref="numpy"/>
+    </dependency>
+  </dependencies>
+</bom>
